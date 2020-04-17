@@ -5,27 +5,27 @@ const auth = require("./util/auth");
 
 const { getAllLists } = require("./APIs/lists");
 
-app.get("/lists", getAllLists);
+app.get("/lists", auth, getAllLists);
 
 const { postOneList } = require("./APIs/lists");
 
-app.post("/list", postOneList);
+app.post("/list", auth, postOneList);
 
 const { deleteList } = require("./APIs/lists");
 
-app.delete("/list/:listId", deleteList);
+app.delete("/list/:listId", auth, deleteList);
 
 const { editList } = require("./APIs/lists");
 
-app.put("/list/:listId", editList);
+app.put("/list/:listId", auth, editList);
 
 const { loginUser } = require("./APIs/users");
 
-app.post("/login", loginUser);
+app.post("/login", auth, loginUser);
 
 const { signUpUser } = require("./APIs/users");
 
-app.post("/signup", signUpUser);
+app.post("/signup", auth, signUpUser);
 
 const { getUserDetail } = require("./APIs/users");
 
