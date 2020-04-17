@@ -1,8 +1,25 @@
-const functions = require('firebase-functions');
+const functions = require("firebase-functions");
+const express = require("express");
+const app = express();
 
-// // Create and Deploy Your First Cloud Functions
-// // https://firebase.google.com/docs/functions/write-firebase-functions
-//
-// exports.helloWorld = functions.https.onRequest((request, response) => {
-//  response.send("Hello from Firebase!");
-// });
+const { getAllLists } = require("./APIs/lists");
+
+app.get("/lists", getAllLists);
+
+const { postOneList } = require("./APIs/lists");
+
+app.post("/list", postOneList);
+
+const { deleteList } = require("./APIs/lists");
+
+app.delete("/list/:listId", deleteList);
+
+const { editList } = require("./APIs/lists");
+
+app.put("/list/:listId", editList);
+
+const { loginUser } = require("./APIs/users");
+
+app.post("/login", loginUser);
+
+exports.api = functions.https.onRequest(app);
