@@ -59,6 +59,9 @@ exports.deleteList = (request, response) => {
       if (!doc.exists) {
         return response.status(404).json({ error: "List not found" });
       }
+      if (doc.data().email !== request.user.email) {
+        return response.status(403).json({ error: "UnAuthorized" });
+      }
       return document.delete();
     })
     .then(() => {
