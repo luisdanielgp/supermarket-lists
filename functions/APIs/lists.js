@@ -2,6 +2,7 @@ const { db } = require("../util/admin");
 
 exports.getAllLists = (request, response) => {
   db.collection("lists")
+    .where("email", "==", request.user.email)
     .orderBy("createdAt", "desc")
     .get()
     .then((data) => {
@@ -31,6 +32,7 @@ exports.postOneList = (request, response) => {
     return response.status(400).json({ title: "Must not be empty" });
   }
   const newListItem = {
+    email: request.user.email,
     name: request.body.name,
     body: request.body.body,
     createdAt: new Date().toISOString(),

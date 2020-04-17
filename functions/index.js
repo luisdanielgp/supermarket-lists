@@ -21,11 +21,11 @@ app.put("/list/:listId", auth, editList);
 
 const { loginUser } = require("./APIs/users");
 
-app.post("/login", auth, loginUser);
+app.post("/login", loginUser);
 
 const { signUpUser } = require("./APIs/users");
 
-app.post("/signup", auth, signUpUser);
+app.post("/signup", signUpUser);
 
 const { getUserDetail } = require("./APIs/users");
 
