@@ -1,6 +1,7 @@
 const functions = require("firebase-functions");
 const express = require("express");
 const app = express();
+const auth = require("./util/auth");
 
 const { getAllLists } = require("./APIs/lists");
 
@@ -25,5 +26,9 @@ app.post("/login", loginUser);
 const { signUpUser } = require("./APIs/users");
 
 app.post("/signup", signUpUser);
+
+const { getUserDetail } = require("./APIs/users");
+
+app.get("/user", auth, getUserDetail);
 
 exports.api = functions.https.onRequest(app);
