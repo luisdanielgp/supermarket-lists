@@ -22,4 +22,8 @@ const { loginUser } = require("./APIs/users");
 
 app.post("/login", loginUser);
 
+const { signUpUser } = require("./APIs/users");
+
+app.post("/signup", signUpUser);
+
 exports.api = functions.https.onRequest(app);
