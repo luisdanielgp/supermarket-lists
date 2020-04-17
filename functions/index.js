@@ -31,4 +31,8 @@ const { getUserDetail } = require("./APIs/users");
 
 app.get("/user", auth, getUserDetail);
 
+const { updateUserDetails } = require("./APIs/users");
+
+app.post("/user", auth, updateUserDetails);
+
 exports.api = functions.https.onRequest(app);
