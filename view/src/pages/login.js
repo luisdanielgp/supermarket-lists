@@ -102,7 +102,7 @@ class login extends Component {
             <LockOutlinedIcon />
           </Avatar>
           <Typography component="h1" variant="h5">
-            Login
+            Inicia sesión
           </Typography>
           <form className={classes.form} noValidate>
             <TextField
@@ -111,7 +111,7 @@ class login extends Component {
               required
               fullWidth
               id="email"
-              label="Email Address"
+              label="Email"
               name="email"
               autoComplete="email"
               autoFocus
@@ -125,7 +125,7 @@ class login extends Component {
               required
               fullWidth
               name="password"
-              label="Password"
+              label="Contraseña"
               type="password"
               id="password"
               autoComplete="current-password"
@@ -142,7 +142,7 @@ class login extends Component {
               onClick={this.handleSubmit}
               disabled={loading || !this.state.email || !this.state.password}
             >
-              Sign In
+              Iniciar sesión
               {loading && (
                 <CircularProgress size={30} className={classes.progess} />
               )}
@@ -150,7 +150,7 @@ class login extends Component {
             <Grid container>
               <Grid item>
                 <Link href="signup" variant="body2">
-                  {"Don't have an account? Sign Up"}
+                  {"¿Aún no tienes una cuenta? Regístrate"}
                 </Link>
               </Grid>
             </Grid>
