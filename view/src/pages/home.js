@@ -5,20 +5,8 @@ import Account from "../components/account";
 import Lists from "../components/list";
 import ResponsiveDrawer from "../components/sidebar";
 
-import Drawer from "@material-ui/core/Drawer";
-import AppBar from "@material-ui/core/AppBar";
 import CssBaseline from "@material-ui/core/CssBaseline";
-import Toolbar from "@material-ui/core/Toolbar";
-import List from "@material-ui/core/List";
-import Typography from "@material-ui/core/Typography";
-import Divider from "@material-ui/core/Divider";
-import ListItem from "@material-ui/core/ListItem";
-import ListItemIcon from "@material-ui/core/ListItemIcon";
-import ListItemText from "@material-ui/core/ListItemText";
 import withStyles from "@material-ui/core/styles/withStyles";
-import AccountBoxIcon from "@material-ui/icons/AccountBox";
-import NotesIcon from "@material-ui/icons/Notes";
-import ExitToAppIcon from "@material-ui/icons/ExitToApp";
 import CircularProgress from "@material-ui/core/CircularProgress";
 
 import { authMiddleWare } from "../util/auth";
@@ -119,55 +107,6 @@ class home extends Component {
       return (
         <div className={classes.root}>
           <CssBaseline />
-          {/* <AppBar position="fixed" className={classes.appBar}>
-            <Toolbar>
-              <Typography variant="h6" noWrap>
-                Supermarket Lists App
-              </Typography>
-            </Toolbar>
-          </AppBar>
-          <Drawer
-            className={classes.drawer}
-            variant="permanent"
-            classes={{
-              paper: classes.drawerPaper,
-            }}
-          >
-            <div className={classes.toolbar} />
-            <Divider />
-            <center>
-              <p>
-                {" "}
-                {this.state.firstName} {this.state.lastName}
-              </p>
-            </center>
-            <Divider />
-            <List>
-              <ListItem button key="Lists" onClick={this.loadListPage}>
-                <ListItemIcon>
-                  {" "}
-                  <NotesIcon />{" "}
-                </ListItemIcon>
-                <ListItemText primary="Lists" />
-              </ListItem>
-
-              <ListItem button key="Account" onClick={this.loadAccountPage}>
-                <ListItemIcon>
-                  {" "}
-                  <AccountBoxIcon />{" "}
-                </ListItemIcon>
-                <ListItemText primary="Account" />
-              </ListItem>
-
-              <ListItem button key="Logout" onClick={this.logoutHandler}>
-                <ListItemIcon>
-                  {" "}
-                  <ExitToAppIcon />{" "}
-                </ListItemIcon>
-                <ListItemText primary="Logout" />
-              </ListItem>
-            </List>
-          </Drawer> */}
           <ResponsiveDrawer drawerData={drawerData} />
 
           <div>{this.state.render ? <Account /> : <Lists />}</div>
