@@ -154,7 +154,7 @@ class list extends Component {
     this.setState({
       name: data.list.name,
       body: data.list.body,
-      todoId: data.list.listId,
+      listId: data.list.listId,
       buttonType: "Edit",
       open: true,
     });
