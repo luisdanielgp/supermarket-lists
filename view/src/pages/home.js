@@ -2,7 +2,8 @@ import React, { Component } from "react";
 import axios from "axios";
 
 import Account from "../components/account";
-import SupermarketList from "../components/list";
+import Lists from "../components/list";
+import ResponsiveDrawer from "../components/sidebar";
 
 import Drawer from "@material-ui/core/Drawer";
 import AppBar from "@material-ui/core/AppBar";
@@ -17,7 +18,6 @@ import ListItemText from "@material-ui/core/ListItemText";
 import withStyles from "@material-ui/core/styles/withStyles";
 import AccountBoxIcon from "@material-ui/icons/AccountBox";
 import NotesIcon from "@material-ui/icons/Notes";
-import Avatar from "@material-ui/core/avatar";
 import ExitToAppIcon from "@material-ui/icons/ExitToApp";
 import CircularProgress from "@material-ui/core/CircularProgress";
 
@@ -29,26 +29,9 @@ const styles = (theme) => ({
   root: {
     display: "flex",
   },
-  appBar: {
-    zIndex: theme.zIndex.drawer + 1,
-  },
-  drawer: {
-    width: drawerWidth,
-    flexShrink: 0,
-  },
-  drawerPaper: {
-    width: drawerWidth,
-  },
   content: {
     flexGrow: 1,
     padding: theme.spacing(3),
-  },
-  avatar: {
-    height: 110,
-    width: 100,
-    flexShrink: 0,
-    flexGrow: 0,
-    marginTop: 20,
   },
   uiProgess: {
     position: "fixed",
@@ -58,7 +41,6 @@ const styles = (theme) => ({
     left: "50%",
     top: "35%",
   },
-  toolbar: theme.mixins.toolbar,
 });
 
 class home extends Component {
@@ -127,13 +109,20 @@ class home extends Component {
         </div>
       );
     } else {
+      const drawerData = {
+        firstName: this.state.firstName,
+        lastName: this.state.lastName,
+        loadListPage: this.loadListPage,
+        loadAccountPage: this.loadAccountPage,
+        logoutHandler: this.logoutHandler,
+      };
       return (
         <div className={classes.root}>
           <CssBaseline />
-          <AppBar position="fixed" className={classes.appBar}>
+          {/* <AppBar position="fixed" className={classes.appBar}>
             <Toolbar>
               <Typography variant="h6" noWrap>
-                Supermarket List App
+                Supermarket Lists App
               </Typography>
             </Toolbar>
           </AppBar>
@@ -154,12 +143,12 @@ class home extends Component {
             </center>
             <Divider />
             <List>
-              <ListItem button key="List" onClick={this.loadListPage}>
+              <ListItem button key="Lists" onClick={this.loadListPage}>
                 <ListItemIcon>
                   {" "}
                   <NotesIcon />{" "}
                 </ListItemIcon>
-                <ListItemText primary="List" />
+                <ListItemText primary="Lists" />
               </ListItem>
 
               <ListItem button key="Account" onClick={this.loadAccountPage}>
@@ -178,9 +167,10 @@ class home extends Component {
                 <ListItemText primary="Logout" />
               </ListItem>
             </List>
-          </Drawer>
+          </Drawer> */}
+          <ResponsiveDrawer drawerData={drawerData} />
 
-          <div>{this.state.render ? <Account /> : <SupermarketList />}</div>
+          <div>{this.state.render ? <Account /> : <Lists />}</div>
         </div>
       );
     }
