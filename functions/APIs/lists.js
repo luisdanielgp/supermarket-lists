@@ -29,7 +29,7 @@ exports.postOneList = (request, response) => {
     return response.status(400).json({ body: "Must not be empty" });
   }
   if (request.body.name.trim() === "") {
-    return response.status(400).json({ title: "Must not be empty" });
+    return response.status(400).json({ name: "Must not be empty" });
   }
   const newListItem = {
     email: request.user.email,
